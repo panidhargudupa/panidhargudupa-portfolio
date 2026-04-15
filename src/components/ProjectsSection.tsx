@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ExternalLink, GitBranch, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
+import { GithubIcon } from "@/components/icons/SocialIcons";
 import { projects } from "@/data/projects";
 import { Link } from "react-router-dom";
 
@@ -61,7 +62,7 @@ const ProjectsSection = () => {
                   )}
                   {project.githubLink && (
                     <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                      <Github size={16} />
+                      <GithubIcon width={16} height={16} />
                     </a>
                   )}
                 </div>

@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Send, GitBranch, Linkedin as LinkedinIcon, Mail, Phone } from "lucide-react";
+import { Send, Mail, Phone } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
 import { useToast } from "@/hooks/use-toast";
 
 const contactSchema = z.object({
@@ -22,11 +23,17 @@ const ContactSection = () => {
   });
 
   const onSubmit = async (data: ContactForm) => {
-    // Placeholder - will wire to backend later
     console.log("Contact form:", data);
     toast({ title: "Message sent!", description: "Thank you for reaching out. I'll get back to you soon." });
     reset();
   };
+
+  const socials = [
+    { icon: <Mail size={18} />, label: "hello@example.com", href: "mailto:hello@example.com" },
+    { icon: <Phone size={18} />, label: "+1 (234) 567-8900", href: "tel:+12345678900" },
+    { icon: <GithubIcon width={18} height={18} />, label: "github.com/johndoe", href: "https://github.com" },
+    { icon: <LinkedinIcon width={18} height={18} />, label: "linkedin.com/in/johndoe", href: "https://linkedin.com" },
+  ];
 
   return (
     <section id="contact" className="py-24 relative">
@@ -49,16 +56,10 @@ const ContactSection = () => {
           >
             <h3 className="text-2xl font-bold text-foreground mb-4">Let's work together</h3>
             <p className="text-muted-foreground mb-8">
-              Have a project in mind or want to collaborate? Feel free to reach out. I'm always open to discussing new opportunities.
+              Have a project in mind or want to collaborate? Feel free to reach out.
             </p>
-
             <div className="space-y-4">
-              {[
-                { icon: Mail, label: "hello@example.com", href: "mailto:hello@example.com" },
-                { icon: Phone, label: "+1 (234) 567-8900", href: "tel:+12345678900" },
-                { icon: Github, label: "github.com/johndoe", href: "https://github.com" },
-                { icon: Linkedin, label: "linkedin.com/in/johndoe", href: "https://linkedin.com" },
-              ].map((item, i) => (
+              {socials.map((item, i) => (
                 <a
                   key={i}
                   href={item.href}
@@ -67,7 +68,7 @@ const ContactSection = () => {
                   className="flex items-center gap-4 p-3 rounded-lg hover:bg-secondary/50 transition-colors group"
                 >
                   <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                    <item.icon size={18} />
+                    {item.icon}
                   </div>
                   <span className="text-muted-foreground group-hover:text-foreground transition-colors text-sm">
                     {item.label}
@@ -84,38 +85,22 @@ const ContactSection = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="glass rounded-xl p-6 space-y-5"
           >
-            <div>
-              <input
-                {...register("name")}
-                placeholder="Your Name"
-                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors text-sm"
-              />
-              {errors.name && <p className="text-destructive text-xs mt-1">{errors.name.message}</p>}
-            </div>
-            <div>
-              <input
-                {...register("email")}
-                placeholder="Your Email"
-                type="email"
-                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors text-sm"
-              />
-              {errors.email && <p className="text-destructive text-xs mt-1">{errors.email.message}</p>}
-            </div>
-            <div>
-              <input
-                {...register("phone")}
-                placeholder="Phone (optional)"
-                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors text-sm"
-              />
-            </div>
-            <div>
-              <input
-                {...register("subject")}
-                placeholder="Subject"
-                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors text-sm"
-              />
-              {errors.subject && <p className="text-destructive text-xs mt-1">{errors.subject.message}</p>}
-            </div>
+            {[
+              { name: "name" as const, placeholder: "Your Name", type: "text" },
+              { name: "email" as const, placeholder: "Your Email", type: "email" },
+              { name: "phone" as const, placeholder: "Phone (optional)", type: "text" },
+              { name: "subject" as const, placeholder: "Subject", type: "text" },
+            ].map((field) => (
+              <div key={field.name}>
+                <input
+                  {...register(field.name)}
+                  placeholder={field.placeholder}
+                  type={field.type}
+                  className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors text-sm"
+                />
+                {errors[field.name] && <p className="text-destructive text-xs mt-1">{errors[field.name]?.message}</p>}
+              </div>
+            ))}
             <div>
               <textarea
                 {...register("message")}
