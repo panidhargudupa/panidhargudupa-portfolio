@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Send, Github, Linkedin, Mail, Phone } from "lucide-react";
+import { Send, GitBranch, Linkedin as LinkedinIcon, Mail, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const contactSchema = z.object({

@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { GitBranch, Linkedin as LinkedinIcon, Mail, Heart } from "lucide-react";
 
 const Footer = () => {
   return (

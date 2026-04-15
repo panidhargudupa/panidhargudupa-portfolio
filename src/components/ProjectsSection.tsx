@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, GitBranch, ArrowRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import { Link } from "react-router-dom";
 

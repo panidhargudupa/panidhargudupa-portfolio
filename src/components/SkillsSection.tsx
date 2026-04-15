@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { Code2, Layout, Server, Database, Cloud, Wrench } from "lucide-react";
+import { Code2, Layout, Server, Database, Cloud, Wrench, type LucideIcon } from "lucide-react";
 import { skillCategories } from "@/data/skills";
 
-const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
+const iconMap: Record<string, LucideIcon> = {
   Code2, Layout, Server, Database, Cloud, Wrench,
 };
 
