@@ -46,16 +46,6 @@ const ResumeSection = () => {
               </a>
             </div>
           </div>
-
-          {/* Embedded viewer placeholder */}
-          <div className="mt-8 glass rounded-xl overflow-hidden" style={{ height: 500 }}>
-            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-              <div className="text-center">
-                <FileText size={48} className="mx-auto mb-4 opacity-30" />
-                <p className="text-sm">Upload your resume PDF to enable the embedded viewer</p>
-              </div>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

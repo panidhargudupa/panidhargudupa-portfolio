@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, CheckCircle, AlertTriangle, Lightbulb } from "lucide-react";
 import { GithubIcon } from "@/components/icons/SocialIcons";
@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 
 const ProjectDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const project = projects.find((p) => p.id === id);
 
   if (!project) {
@@ -15,7 +16,7 @@ const ProjectDetail = () => {
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4">Project Not Found</h1>
-          <Link to="/" className="text-primary hover:underline">Go back home</Link>
+          <button onClick={() => navigate("/")} className="text-primary hover:underline">Go back home</button>
         </div>
       </div>
     );
@@ -27,9 +28,12 @@ const ProjectDetail = () => {
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-6 max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <Link to="/#projects" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
+            <button
+              onClick={() => navigate("/#projects")}
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
+            >
               <ArrowLeft size={16} /> Back to Projects
-            </Link>
+            </button>
 
             {/* Header */}
             <div className="mb-12">
@@ -43,7 +47,7 @@ const ProjectDetail = () => {
                 ))}
               </div>
               <div className="flex gap-4">
-                {project.liveLink && (
+                {project.liveLink && project.liveLink !== "#" && (
                   <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="px-5 py-2 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity flex items-center gap-2">
                     <ExternalLink size={16} /> Live Demo
                   </a>

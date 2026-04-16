@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import { ExternalLink, ArrowRight, Star } from "lucide-react";
 import { GithubIcon } from "@/components/icons/SocialIcons";
 import { projects } from "@/data/projects";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProjectsSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="projects" className="py-24 relative">
       <div className="container mx-auto px-6">
@@ -26,7 +28,8 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`glass rounded-xl overflow-hidden group hover:border-primary/30 transition-all ${
+              onClick={() => navigate(`/projects/${project.id}`)}
+              className={`glass rounded-xl overflow-hidden group hover:border-primary/30 transition-all cursor-pointer hover:scale-[1.02] hover:shadow-[0_0_40px_hsl(170_80%_55%/0.1)] duration-300 ${
                 project.featured ? "md:col-span-2" : ""
               }`}
             >
@@ -56,19 +59,28 @@ const ProjectsSection = () => {
                   ))}
                 </div>
                 <div className="flex items-center gap-3">
-                  <Link
-                    to={`/projects/${project.id}`}
-                    className="flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-                  >
+                  <span className="flex items-center gap-1 text-sm font-medium text-primary group-hover:underline">
                     View Details <ArrowRight size={14} />
-                  </Link>
+                  </span>
                   {project.liveLink && project.liveLink !== "#" && (
-                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       <ExternalLink size={16} />
                     </a>
                   )}
                   {project.githubLink && (
-                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       <GithubIcon width={16} height={16} />
                     </a>
                   )}
