@@ -3,9 +3,9 @@ import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
 
 const Footer = () => {
   const socials = [
-    { icon: <GithubIcon width={18} height={18} />, href: "https://github.com" },
-    { icon: <LinkedinIcon width={18} height={18} />, href: "https://linkedin.com" },
-    { icon: <Mail size={18} />, href: "mailto:hello@example.com" },
+    { icon: <GithubIcon width={18} height={18} />, href: "https://github.com/panidhargudupa" },
+    { icon: <LinkedinIcon width={18} height={18} />, href: "https://linkedin.com/in/panidhargudupa" },
+    { icon: <Mail size={18} />, href: "mailto:panidhargudupa1@gmail.com" },
   ];
 
   return (
@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
-            <p className="text-xl font-bold text-gradient font-display mb-1">{"<Dev />"}</p>
+            <p className="text-xl font-bold text-gradient font-display mb-1">{"<Panidhar />"}</p>
             <p className="text-sm text-muted-foreground">
               Built with <Heart size={12} className="inline text-primary" /> and lots of coffee
             </p>
@@ -32,7 +32,7 @@ const Footer = () => {
             ))}
           </div>
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} John Doe. All rights reserved.
+            © {new Date().getFullYear()} Panidhar G Udupa. All rights reserved.
           </p>
         </div>
       </div>

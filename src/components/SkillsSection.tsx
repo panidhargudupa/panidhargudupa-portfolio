@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { Code2, Layout, Server, Database, Cloud, Wrench, type LucideIcon } from "lucide-react";
+import { Code2, Layout, Server, Database, Cloud, Wrench, Shield, type LucideIcon } from "lucide-react";
 import { skillCategories } from "@/data/skills";
 
 const iconMap: Record<string, LucideIcon> = {
-  Code2, Layout, Server, Database, Cloud, Wrench,
+  Code2, Layout, Server, Database, Cloud, Wrench, Shield,
 };
 
 const SkillsSection = () => {
@@ -42,7 +42,7 @@ const SkillsSection = () => {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-secondary-foreground border border-border hover:border-primary/40 hover:text-primary transition-colors"
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-foreground/80 border border-border hover:border-primary/40 hover:text-primary transition-colors"
                     >
                       {skill}
                     </span>

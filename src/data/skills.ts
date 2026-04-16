@@ -6,33 +6,33 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Programming Languages",
-    icon: "Code2",
-    skills: ["JavaScript", "TypeScript", "Python", "Java", "C++", "SQL"],
-  },
-  {
     title: "Frontend",
     icon: "Layout",
-    skills: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "HTML5", "CSS3"],
+    skills: ["HTML", "CSS", "JavaScript", "TypeScript", "React.js", "Angular", "Redux", "Tailwind CSS", "Bootstrap", "Material UI"],
   },
   {
     title: "Backend",
     icon: "Server",
-    skills: ["Node.js", "Express.js", "FastAPI", "REST APIs", "GraphQL", "WebSockets"],
+    skills: ["Node.js", "Express.js", ".NET", "Flask", "REST API", "MVC Architecture"],
   },
   {
     title: "Database",
     icon: "Database",
-    skills: ["PostgreSQL", "MongoDB", "Redis", "Supabase", "Prisma", "MySQL"],
+    skills: ["MongoDB", "MongoDB Atlas", "MySQL", "SQL Server", "PostgreSQL"],
+  },
+  {
+    title: "Security & Auth",
+    icon: "Shield",
+    skills: ["JWT", "Passport.js", "Session Management", "Authorization", "Joi Validation", "Middleware"],
   },
   {
     title: "Cloud & DevOps",
     icon: "Cloud",
-    skills: ["AWS", "Docker", "Vercel", "CI/CD", "Nginx", "Linux"],
+    skills: ["Cloudinary", "Docker", "CI/CD", "Render", "Mapbox API"],
   },
   {
     title: "Tools",
     icon: "Wrench",
-    skills: ["Git", "VS Code", "Figma", "Postman", "Jira", "Notion"],
+    skills: ["Git", "GitHub", "Postman", "VS Code", "npm", "Terminal"],
   },
 ];

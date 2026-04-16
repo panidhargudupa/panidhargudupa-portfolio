@@ -9,13 +9,11 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0">
         <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
       </div>
 
-      {/* Floating orbs */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "3s" }} />
 
@@ -27,14 +25,17 @@ const HeroSection = () => {
         >
           <p className="text-primary font-mono text-sm mb-4 tracking-wider">Hello, I'm</p>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-display mb-4">
-            <span className="text-gradient">John Doe</span>
+            <span className="text-gradient">Panidhar G Udupa</span>
           </h1>
-          <h2 className="text-xl md:text-2xl text-muted-foreground font-light mb-8">
-            Full-Stack Developer & Software Engineer
+          <h2 className="text-lg md:text-xl text-foreground/90 font-medium mb-6">
+            Full Stack Developer | MCA Graduate | Software Engineer
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-            Passionate about building scalable web applications and crafting exceptional digital experiences.
-            Turning complex problems into elegant, user-friendly solutions.
+          <p className="text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed text-base md:text-lg">
+            Building scalable full-stack web applications with MERN, .NET, PostgreSQL, and AI-driven solutions.
+            <br className="hidden md:block" />
+            <span className="text-foreground/70">
+              MCA graduate with practical experience in end-to-end web application development across frontend, backend, cloud, and deployment workflows.
+            </span>
           </p>
         </motion.div>
 
@@ -54,7 +55,7 @@ const HeroSection = () => {
             onClick={() => scrollTo("#resume")}
             className="px-8 py-3 rounded-lg glass border-primary/30 text-foreground font-semibold hover:bg-primary/10 transition-colors flex items-center gap-2"
           >
-            <FileText size={18} /> Resume
+            <FileText size={18} /> Download Resume
           </button>
           <button
             onClick={() => scrollTo("#contact")}
