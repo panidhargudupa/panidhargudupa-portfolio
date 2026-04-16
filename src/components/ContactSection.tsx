@@ -29,10 +29,10 @@ const ContactSection = () => {
   };
 
   const socials = [
-    { icon: <Mail size={18} />, label: "hello@example.com", href: "mailto:hello@example.com" },
-    { icon: <Phone size={18} />, label: "+1 (234) 567-8900", href: "tel:+12345678900" },
-    { icon: <GithubIcon width={18} height={18} />, label: "github.com/johndoe", href: "https://github.com" },
-    { icon: <LinkedinIcon width={18} height={18} />, label: "linkedin.com/in/johndoe", href: "https://linkedin.com" },
+    { icon: <Mail size={18} />, label: "panidhargudupa1@gmail.com", href: "mailto:panidhargudupa1@gmail.com" },
+    { icon: <Phone size={18} />, label: "+91 6364062929", href: "tel:+916364062929" },
+    { icon: <GithubIcon width={18} height={18} />, label: "github.com/panidhargudupa", href: "https://github.com/panidhargudupa" },
+    { icon: <LinkedinIcon width={18} height={18} />, label: "linkedin.com/in/panidhargudupa", href: "https://linkedin.com/in/panidhargudupa" },
   ];
 
   return (
@@ -55,8 +55,8 @@ const ContactSection = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold text-foreground mb-4">Let's work together</h3>
-            <p className="text-muted-foreground mb-8">
-              Have a project in mind or want to collaborate? Feel free to reach out.
+            <p className="text-foreground/70 mb-8">
+              Have a project in mind or want to collaborate? Feel free to reach out. I'm always open to discussing new opportunities.
             </p>
             <div className="space-y-4">
               {socials.map((item, i) => (
@@ -70,7 +70,7 @@ const ContactSection = () => {
                   <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
                     {item.icon}
                   </div>
-                  <span className="text-muted-foreground group-hover:text-foreground transition-colors text-sm">
+                  <span className="text-foreground/70 group-hover:text-foreground transition-colors text-sm">
                     {item.label}
                   </span>
                 </a>

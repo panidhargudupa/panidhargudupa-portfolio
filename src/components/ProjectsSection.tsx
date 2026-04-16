@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowRight, Star } from "lucide-react";
 import { GithubIcon } from "@/components/icons/SocialIcons";
 import { projects } from "@/data/projects";
 import { Link } from "react-router-dom";
@@ -26,10 +26,17 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="glass rounded-xl overflow-hidden group hover:border-primary/30 transition-all"
+              className={`glass rounded-xl overflow-hidden group hover:border-primary/30 transition-all ${
+                project.featured ? "md:col-span-2" : ""
+              }`}
             >
-              <div className="h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center relative overflow-hidden">
+              <div className={`${project.featured ? "h-56" : "h-48"} bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center relative overflow-hidden`}>
                 <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
+                {project.featured && (
+                  <div className="absolute top-4 right-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-medium">
+                    <Star size={12} /> Featured
+                  </div>
+                )}
                 <span className="relative text-4xl font-bold text-gradient opacity-30 font-display">
                   {project.title.charAt(0)}
                 </span>
@@ -38,11 +45,11 @@ const ProjectsSection = () => {
                 <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                <p className="text-sm text-foreground/70 mb-4 leading-relaxed">
                   {project.shortDescription}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-5">
-                  {project.techStack.slice(0, 4).map((tech) => (
+                  {project.techStack.slice(0, 6).map((tech) => (
                     <span key={tech} className="px-2 py-0.5 rounded text-xs font-mono bg-primary/10 text-primary border border-primary/20">
                       {tech}
                     </span>
@@ -55,7 +62,7 @@ const ProjectsSection = () => {
                   >
                     View Details <ArrowRight size={14} />
                   </Link>
-                  {project.liveLink && (
+                  {project.liveLink && project.liveLink !== "#" && (
                     <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                       <ExternalLink size={16} />
                     </a>

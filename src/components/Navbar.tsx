@@ -6,6 +6,7 @@ const navItems = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
@@ -37,10 +38,9 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <button onClick={() => scrollTo("#home")} className="text-xl font-bold text-gradient font-display">
-          {"<Dev />"}
+          {"<Panidhar />"}
         </button>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <button
@@ -53,7 +53,6 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Mobile toggle */}
         <button
           className="md:hidden text-foreground"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -62,7 +61,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
