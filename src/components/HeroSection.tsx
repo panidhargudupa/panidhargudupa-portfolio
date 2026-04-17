@@ -2,6 +2,25 @@ import { motion } from "framer-motion";
 import { ArrowDown, FileText, Mail } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: "easeOut" },
+  },
+};
+
 const HeroSection = () => {
   const scrollTo = (href: string) => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
@@ -10,56 +29,47 @@ const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" width={1920} height={1080} />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-[0.08] grayscale" width={1920} height={1080} />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,17,32,0.55),rgba(11,17,32,0.82)_45%,rgba(0,0,0,0.96)_100%)]" />
       </div>
 
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/3 right-1/4 w-48 h-48 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "3s" }} />
-
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="text-primary font-mono text-sm mb-4 tracking-wider">Hello, I'm</p>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-display mb-4">
-            <span className="text-gradient">Panidhar G Udupa</span>
-          </h1>
-          <h2 className="text-lg md:text-xl text-foreground/90 font-medium mb-6">
+        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-4xl mx-auto">
+          <motion.p variants={itemVariants} className="text-primary font-mono text-sm mb-4 tracking-[0.24em] uppercase">
+            Full Stack Developer
+          </motion.p>
+          <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-bold font-display mb-5 text-white text-balance">
+            Panidhar G Udupa
+          </motion.h1>
+          <motion.h2 variants={itemVariants} className="text-lg md:text-2xl text-slate-100 font-medium mb-6 text-balance">
             Full Stack Developer | MCA Graduate | Software Engineer
-          </h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed text-base md:text-lg">
-            Building scalable full-stack web applications with MERN, .NET, PostgreSQL, and AI-driven solutions.
-            <br className="hidden md:block" />
-            <span className="text-foreground/70">
-              MCA graduate with practical experience in end-to-end web application development across frontend, backend, cloud, and deployment workflows.
-            </span>
-          </p>
+          </motion.h2>
+          <motion.p variants={itemVariants} className="text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed text-base md:text-lg text-balance">
+            Building scalable full-stack web applications and intelligent software solutions with MERN, .NET, PostgreSQL, and AI-driven technologies.
+          </motion.p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.45 }}
           className="flex flex-wrap items-center justify-center gap-4"
         >
           <button
             onClick={() => scrollTo("#projects")}
-            className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity glow-primary"
+            className="px-8 py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:scale-[1.02] hover:bg-sky-400 transition-all glow-primary"
           >
             View Projects
           </button>
           <button
             onClick={() => scrollTo("#resume")}
-            className="px-8 py-3 rounded-lg glass border-primary/30 text-foreground font-semibold hover:bg-primary/10 transition-colors flex items-center gap-2"
+            className="px-8 py-3 rounded-xl glass text-foreground font-semibold hover:bg-white/5 hover:scale-[1.02] transition-all flex items-center gap-2"
           >
             <FileText size={18} /> Download Resume
           </button>
           <button
             onClick={() => scrollTo("#contact")}
-            className="px-8 py-3 rounded-lg glass border-accent/30 text-foreground font-semibold hover:bg-accent/10 transition-colors flex items-center gap-2"
+            className="px-8 py-3 rounded-xl glass text-foreground font-semibold hover:bg-white/5 hover:scale-[1.02] transition-all flex items-center gap-2"
           >
             <Mail size={18} /> Contact Me
           </button>
@@ -68,7 +78,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
+          transition={{ delay: 1 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
         >
           <button onClick={() => scrollTo("#about")} className="text-muted-foreground hover:text-primary transition-colors animate-bounce">

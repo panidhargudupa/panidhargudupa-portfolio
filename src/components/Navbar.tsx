@@ -16,19 +16,29 @@ const navItems = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState("#home");
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+      const sections = navItems
+        .map((item) => ({ href: item.href, element: document.querySelector(item.href) as HTMLElement | null }))
+        .filter((item) => item.element);
+
+      const current = sections.findLast((item) => (item.element?.offsetTop ?? 0) - 150 <= window.scrollY);
+      if (current) setActiveHash(current.href);
+    };
+
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollTo = (href: string) => {
     setIsMobileOpen(false);
     if (location.pathname !== "/") {
-      // Navigate to home with hash — ScrollToTop handles the scroll
       navigate("/" + href);
     } else {
       const el = document.querySelector(href);
@@ -38,34 +48,49 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
+      initial={{ y: -90 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass-strong shadow-lg" : "bg-transparent"
+        isScrolled ? "glass-strong border-b border-white/5" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <button onClick={() => scrollTo("#home")} className="text-xl font-bold text-gradient font-display">
-          {"<Panidhar />"}
+        <button onClick={() => scrollTo("#home")} className="text-left">
+          <div className="text-lg md:text-xl font-bold tracking-[0.18em] text-white">PANIDHAR G UDUPA</div>
+          <div className="text-xs text-muted-foreground tracking-[0.2em] uppercase mt-1">Full Stack Developer</div>
         </button>
 
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <button
-              key={item.href}
-              onClick={() => scrollTo(item.href)}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-            >
-              {item.label}
-            </button>
-          ))}
+        <div className="hidden md:flex items-center gap-6 lg:gap-7">
+          {navItems.map((item) =>
+            item.label === "Contact" ? (
+              <motion.button
+                key={item.href}
+                onClick={() => scrollTo(item.href)}
+                animate={{ y: [0, -3, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{ scale: 1.03 }}
+                className="shine-button rounded-full bg-primary px-5 py-2 text-sm lg:text-base font-semibold text-primary-foreground glow-primary"
+              >
+                {item.label}
+              </motion.button>
+            ) : (
+              <button
+                key={item.href}
+                onClick={() => scrollTo(item.href)}
+                className={`relative text-sm lg:text-base font-medium transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-primary after:transition-all after:duration-300 ${
+                  activeHash === item.href
+                    ? "text-white after:w-full"
+                    : "text-foreground/75 hover:text-white after:w-0 hover:after:w-full"
+                }`}
+              >
+                {item.label}
+              </button>
+            ),
+          )}
         </div>
 
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
-        >
-          {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
+        <button className="md:hidden text-foreground" onClick={() => setIsMobileOpen(!isMobileOpen)}>
+          {isMobileOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
@@ -75,17 +100,31 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-strong border-t border-border"
+            className="md:hidden glass-strong border-t border-white/5"
           >
-            <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+            <div className="container mx-auto px-6 py-5 flex flex-col gap-4">
               {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollTo(item.href)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors text-left"
-                >
-                  {item.label}
-                </button>
+                item.label === "Contact" ? (
+                  <motion.button
+                    key={item.href}
+                    onClick={() => scrollTo(item.href)}
+                    animate={{ x: [0, 6, 0] }}
+                    transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                    className="shine-button w-full rounded-xl bg-primary px-4 py-3 text-left text-base font-semibold text-primary-foreground glow-primary"
+                  >
+                    {item.label}
+                  </motion.button>
+                ) : (
+                  <button
+                    key={item.href}
+                    onClick={() => scrollTo(item.href)}
+                    className={`text-left text-base font-medium transition-colors ${
+                      activeHash === item.href ? "text-primary" : "text-foreground/80 hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                )
               ))}
             </div>
           </motion.div>

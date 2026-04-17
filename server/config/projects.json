@@ -1,0 +1,27 @@
+[
+  {
+    "repo": "panidhargudupa-portfolio",
+    "visible": true,
+    "featured": true
+  },
+  {
+    "repo": "restaurant-management-system",
+    "visible": true,
+    "featured": false
+  },
+  {
+    "repo": "ecommerce-frontend",
+    "visible": true,
+    "featured": true
+  },
+  {
+    "repo": "staynest",
+    "visible": true,
+    "featured": false
+  },
+  {
+    "repo": "random-test",
+    "visible": false,
+    "featured": false
+  }
+]

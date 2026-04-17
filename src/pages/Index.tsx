@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import BackgroundFX from "@/components/BackgroundFX";
 import HeroSection from "@/components/HeroSection";
 import MetricsSection from "@/components/MetricsSection";
 import AboutSection from "@/components/AboutSection";
@@ -11,17 +12,20 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative section-shell">
+      <BackgroundFX />
       <Navbar />
-      <HeroSection />
-      <MetricsSection />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <ResumeSection />
-      <ContactSection />
-      <Footer />
+      <div className="relative z-10">
+        <HeroSection />
+        <MetricsSection />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <ResumeSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </div>
   );
 };

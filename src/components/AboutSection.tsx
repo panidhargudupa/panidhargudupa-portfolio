@@ -47,9 +47,13 @@ const AboutSection = () => {
               { icon: Target, title: "Career Goal", desc: "Building scalable products at innovative tech companies as a Full-Stack Developer" },
               { icon: Sparkles, title: "Interests", desc: "Web Development, Cloud Computing, AI/ML, Open Source Contribution" },
             ].map((item, i) => (
-              <div key={i} className="glass rounded-xl p-6 glow-primary hover:border-primary/30 transition-colors group">
+              <motion.div
+                key={i}
+                whileHover={{ y: -8, rotateX: 2, rotateY: -2, scale: 1.02 }}
+                className="glass neon-outline card-hover rounded-xl p-6 hover:border-primary/30 transition-colors group"
+              >
                 <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                  <div className="p-2 rounded-lg bg-primary/10 text-accent group-hover:bg-primary/20 transition-colors">
                     <item.icon size={22} />
                   </div>
                   <div>
@@ -57,7 +61,8 @@ const AboutSection = () => {
                     <p className="text-sm text-foreground/70">{item.desc}</p>
                   </div>
                 </div>
-              </div>
+                <div className="mt-5 h-px w-16 bg-gradient-to-r from-primary via-accent/80 to-transparent" />
+              </motion.div>
             ))}
           </motion.div>
         </div>

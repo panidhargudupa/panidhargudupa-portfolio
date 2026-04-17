@@ -23,9 +23,48 @@ const ContactSection = () => {
   });
 
   const onSubmit = async (data: ContactForm) => {
-    console.log("Contact form:", data);
-    toast({ title: "Message sent!", description: "Thank you for reaching out. I'll get back to you soon." });
-    reset();
+    try {
+      // Using FormSubmit.co - this sends directly in the background WITHOUT opening tabs!
+      // NOTE: NO API keys needed!
+      const response = await fetch("https://formsubmit.co/ajax/panidhargudupa1@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          Name: data.name,
+          Email: data.email,
+          Phone: data.phone || "Not provided",
+          Subject: data.subject,
+          Message: data.message,
+          _template: "box", // Beautiful default template
+          _subject: `New Portfolio Message: ${data.subject}`
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast({ 
+          title: "Thank You! ✨", 
+          description: "Your message has been successfully delivered. I'll get back to you shortly.",
+        });
+        reset();
+      } else {
+        toast({ 
+          variant: "destructive",
+          title: "Failed to send message", 
+          description: result.message || "Please try again later.",
+        });
+      }
+    } catch (error) {
+      toast({ 
+        variant: "destructive",
+        title: "Connection Error", 
+        description: "Failed to route to FormSubmit servers.",
+      });
+    }
   };
 
   const socials = [
@@ -60,20 +99,21 @@ const ContactSection = () => {
             </p>
             <div className="space-y-4">
               {socials.map((item, i) => (
-                <a
+                <motion.a
                   key={i}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-3 rounded-lg hover:bg-secondary/50 transition-colors group"
+                  whileHover={{ y: -4, scale: 1.01 }}
+                  className="glass neon-outline flex items-center gap-4 p-3 rounded-lg hover:bg-secondary/50 transition-colors group"
                 >
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                  <div className="p-2 rounded-lg bg-primary/10 text-accent group-hover:bg-primary/20 transition-colors">
                     {item.icon}
                   </div>
                   <span className="text-foreground/70 group-hover:text-foreground transition-colors text-sm">
                     {item.label}
                   </span>
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>
@@ -83,7 +123,8 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit(onSubmit)}
-            className="glass rounded-xl p-6 space-y-5"
+            whileHover={{ y: -8, scale: 1.005 }}
+            className="glass neon-outline rounded-xl p-6 space-y-5 transition-all"
           >
             {[
               { name: "name" as const, placeholder: "Your Name", type: "text" },
@@ -96,7 +137,7 @@ const ContactSection = () => {
                   {...register(field.name)}
                   placeholder={field.placeholder}
                   type={field.type}
-                  className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors text-sm"
+                  className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/60 transition-colors text-sm"
                 />
                 {errors[field.name] && <p className="text-destructive text-xs mt-1">{errors[field.name]?.message}</p>}
               </div>
@@ -106,14 +147,14 @@ const ContactSection = () => {
                 {...register("message")}
                 placeholder="Your Message"
                 rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors text-sm resize-none"
+                className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/60 transition-colors text-sm resize-none"
               />
               {errors.message && <p className="text-destructive text-xs mt-1">{errors.message.message}</p>}
             </div>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity glow-primary flex items-center justify-center gap-2 disabled:opacity-50"
+              className="shine-button w-full px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-95 transition-all hover:scale-[1.01] glow-primary flex items-center justify-center gap-2 disabled:opacity-50"
             >
               <Send size={18} /> {isSubmitting ? "Sending..." : "Send Message"}
             </button>

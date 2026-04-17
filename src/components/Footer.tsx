@@ -1,4 +1,5 @@
-import { Mail, Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/SocialIcons";
 
 const Footer = () => {
@@ -9,30 +10,29 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="py-12 border-t border-primary/30 bg-black/40 relative overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
-            <p className="text-xl font-bold text-gradient font-display mb-1">{"<Panidhar />"}</p>
-            <p className="text-sm text-muted-foreground">
-              Built with <Heart size={12} className="inline text-primary" /> and lots of coffee
-            </p>
+            <p className="text-xl font-bold text-white font-display tracking-[0.16em]">PANIDHAR G UDUPA</p>
           </div>
           <div className="flex items-center gap-4">
             {socials.map((item, i) => (
-              <a
+              <motion.a
                 key={i}
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-secondary/50 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                whileHover={{ y: -5, scale: 1.08 }}
+                className="glass neon-outline p-2 rounded-lg text-muted-foreground hover:text-accent hover:bg-primary/10 transition-colors"
               >
                 {item.icon}
-              </a>
+              </motion.a>
             ))}
           </div>
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Panidhar G Udupa. All rights reserved.
+            {"\u00A9"} {new Date().getFullYear()} Panidhar G Udupa. All rights reserved.
           </p>
         </div>
       </div>

@@ -30,10 +30,11 @@ const SkillsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="glass rounded-xl p-6 hover:border-primary/30 transition-all group"
+                whileHover={{ y: -8, scale: 1.02, rotateX: 1.5, rotateY: -1.5 }}
+                className="glass neon-outline card-hover rounded-xl p-6 hover:border-primary/30 transition-all group"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
+                  <div className="p-2 rounded-lg bg-primary/10 text-accent group-hover:bg-primary/20 transition-colors">
                     {Icon && <Icon size={20} />}
                   </div>
                   <h3 className="font-semibold text-foreground">{category.title}</h3>
@@ -42,7 +43,7 @@ const SkillsSection = () => {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-foreground/80 border border-border hover:border-primary/40 hover:text-primary transition-colors"
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-foreground/80 border border-border hover:border-accent/50 hover:text-accent transition-colors"
                     >
                       {skill}
                     </span>

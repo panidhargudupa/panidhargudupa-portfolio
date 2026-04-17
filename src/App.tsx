@@ -8,23 +8,25 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index.tsx";
 import ProjectDetail from "./pages/ProjectDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Certificate from "./pages/Certificate.tsx";
 
 const queryClient = new QueryClient();
 
 const AnimatedRoutes = () => {
   const location = useLocation();
-  return (
+  return (  
     <AnimatePresence mode="wait">
       <motion.div
         key={location.pathname}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.3 }}
+        initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        exit={{ opacity: 0, y: -16, filter: "blur(8px)" }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
       >
         <Routes location={location}>
           <Route path="/" element={<Index />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/certificate" element={<Certificate />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.div>
@@ -37,7 +39,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
         <AnimatedRoutes />
       </BrowserRouter>
