@@ -67,46 +67,6 @@ panidhargudupa-portfolio/
 
 ---
 
-## 🚀 Projects Included
-
-### 🔹 StayNest Booking
-Full-stack booking platform inspired by Airbnb with authentication, listings, booking system, and reviews.  
-https://github.com/panidhargudupa/staynest-booking  
-
-### 🔹 Portfolio Website
-Modern developer portfolio built with React, TypeScript, and TailwindCSS.  
-https://github.com/panidhargudupa/panidhargudupa-portfolio  
-
-### 🔹 Gushwork Web Assignment
-Responsive frontend project with pixel-perfect UI implementation.  
-https://github.com/panidhargudupa/gushwork-web-assignment  
-
-### 🔹 Restaurant Management System
-Full-stack system built with .NET, Angular, and SQL Server.  
-https://github.com/panidhargudupa/restaurant-management-system  
-
-### 🔹 React Weather Widget
-Weather widget using React and API integration.  
-https://github.com/panidhargudupa/react-weather-widget  
-
-### 🔹 Career Lift AI
-AI-powered career guidance platform.  
-https://github.com/panidhargudupa/career-lift-ai  
-
-### 🔹 Todo List React App
-Simple React app demonstrating state management.  
-https://github.com/panidhargudupa/myfirst_react-code_for-making_todolist  
-
-### 🔹 Lung Cancer Detection
-Machine learning project for detecting lung cancer.  
-https://github.com/panidhargudupa/Lung-Cancer-Detection-and-Classification  
-
-### 🔹 Bengaluru House Price Prediction
-ML model predicting house prices using regression.  
-https://github.com/panidhargudupa/bengaluru_houseprice_prediction  
-
----
-
 ## 📸 Screenshots
 
 (Add screenshots here)
