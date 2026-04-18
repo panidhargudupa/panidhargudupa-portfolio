@@ -49,13 +49,14 @@ Deployment: Vercel
 
 ## 📂 Project Structure
 
+```bash
 panidhargudupa-portfolio/
 │
 ├── public/               # Static assets
 ├── src/
 │   ├── components/       # Reusable UI components
 │   ├── pages/            # Pages (Home, Projects, etc.)
-│   ├── data/             # Static project data
+│   ├── data/             # Static data (projects, etc.)
 │   ├── hooks/            # Custom hooks
 │   ├── styles/           # Global styles
 │   ├── App.tsx           # Root component
