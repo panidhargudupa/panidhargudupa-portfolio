@@ -40,7 +40,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/panidhargudupa-portfolio/">
+      <BrowserRouter>
         <ScrollToTop />
         <Navbar />
         <AnimatedRoutes />
