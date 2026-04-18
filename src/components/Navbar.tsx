@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -19,6 +19,15 @@ const Navbar = () => {
   const [activeHash, setActiveHash] = useState("#home");
   const navigate = useNavigate();
   const location = useLocation();
+
+
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,6 +55,10 @@ const Navbar = () => {
     }
   };
 
+  if (location.pathname === "/certificate") {
+    return null;
+  }
+
   return (
     <motion.nav
       initial={{ y: -90 }}
@@ -61,30 +74,44 @@ const Navbar = () => {
         </button>
 
         <div className="hidden md:flex items-center gap-6 lg:gap-7">
-          {navItems.map((item) =>
+          {navItems.map((item, index) =>
             item.label === "Contact" ? (
-              <motion.button
+<motion.button
                 key={item.href}
                 onClick={() => scrollTo(item.href)}
-                animate={{ y: [0, -3, 0] }}
-                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                animate-y-axis={{ y: [0, -3, 0] }}
+                transition-y-axis={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
                 whileHover={{ scale: 1.03 }}
                 className="shine-button rounded-full bg-primary px-5 py-2 text-sm lg:text-base font-semibold text-primary-foreground glow-primary"
               >
                 {item.label}
               </motion.button>
             ) : (
-              <button
+              <motion.button
                 key={item.href}
                 onClick={() => scrollTo(item.href)}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
                 className={`relative text-sm lg:text-base font-medium transition-colors after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-primary after:transition-all after:duration-300 ${
                   activeHash === item.href
                     ? "text-white after:w-full"
                     : "text-foreground/75 hover:text-white after:w-0 hover:after:w-full"
                 }`}
               >
-                {item.label}
-              </button>
+                <motion.span
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  {item.label}
+                </motion.span>
+              </motion.button>
             ),
           )}
         </div>
@@ -108,6 +135,7 @@ const Navbar = () => {
                   <motion.button
                     key={item.href}
                     onClick={() => scrollTo(item.href)}
+                    whileTap={{ scale: 0.95 }}
                     animate={{ x: [0, 6, 0] }}
                     transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
                     className="shine-button w-full rounded-xl bg-primary px-4 py-3 text-left text-base font-semibold text-primary-foreground glow-primary"
@@ -115,21 +143,29 @@ const Navbar = () => {
                     {item.label}
                   </motion.button>
                 ) : (
-                  <button
+                  <motion.button
                     key={item.href}
                     onClick={() => scrollTo(item.href)}
+                    whileHover={{ x: 4 }}
+                    whileTap={{ scale: 0.95 }}
                     className={`text-left text-base font-medium transition-colors ${
                       activeHash === item.href ? "text-primary" : "text-foreground/80 hover:text-white"
                     }`}
                   >
                     {item.label}
-                  </button>
+                  </motion.button>
                 )
               ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Fluid Scroll Progress Border */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-accent to-primary glow-primary"
+        style={{ scaleX, transformOrigin: "0%" }}
+      />
     </motion.nav>
   );
 };

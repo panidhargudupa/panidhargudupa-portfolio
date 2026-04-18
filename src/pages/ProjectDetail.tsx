@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, CheckCircle, Code2, ShieldAlert } from "lucide-react";
 import { GithubIcon } from "@/components/icons/SocialIcons";
 import BackgroundFX from "@/components/BackgroundFX";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const ProjectDetail = () => {
@@ -17,7 +16,6 @@ const ProjectDetail = () => {
     return (
       <div className="min-h-screen bg-background relative section-shell flex items-center justify-center">
         <BackgroundFX />
-        <Navbar />
         <div className="text-center relative z-10 glass p-10 rounded-2xl border border-destructive/20">
           <ShieldAlert size={48} className="text-destructive mx-auto mb-4" />
           <h1 className="text-4xl font-bold text-foreground mb-4">Project Data Lost</h1>
@@ -37,7 +35,6 @@ const ProjectDetail = () => {
   return (
     <div className="min-h-screen bg-background relative section-shell">
       <BackgroundFX />
-      <Navbar />
       <main className="pt-28 pb-16 relative z-10">
         <div className="container mx-auto px-6 max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>

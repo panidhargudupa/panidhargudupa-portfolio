@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import BackgroundFX from "@/components/BackgroundFX";
 import HeroSection from "@/components/HeroSection";
 import MetricsSection from "@/components/MetricsSection";
@@ -14,7 +13,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background relative section-shell">
       <BackgroundFX />
-      <Navbar />
       <div className="relative z-10">
         <HeroSection />
         <MetricsSection />

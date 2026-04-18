@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import { FileText, ExternalLink, Download } from "lucide-react";
 
 const ResumeSection = () => {
-  // Files inside /public are served from the site root in both local and production builds.
-  const resumeUrl = "/resume.pdf";
+  const resumeUrl = import.meta.env.BASE_URL + "resume.pdf";
 
   return (
     <section id="resume" className="py-24 relative">

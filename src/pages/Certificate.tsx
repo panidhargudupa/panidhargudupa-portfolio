@@ -3,7 +3,7 @@ import { Download, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Certificate = () => {
-  const certificateUrl = "/loginware-certificate.pdf";
+  const certificateUrl = import.meta.env.BASE_URL + "loginware-certificate.pdf";
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">

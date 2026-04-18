@@ -9,6 +9,7 @@ import Index from "./pages/Index.tsx";
 import ProjectDetail from "./pages/ProjectDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Certificate from "./pages/Certificate.tsx";
+import Navbar from "@/components/Navbar";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename="/panidhargudupa-portfolio/">
         <ScrollToTop />
+        <Navbar />
         <AnimatedRoutes />
       </BrowserRouter>
     </TooltipProvider>
