@@ -70,11 +70,38 @@ panidhargudupa-portfolio/
 
 ## 📸 Screenshots
 
-![Screenshot 1](public/1.jpeg)
-![Screenshot 2](public/2.jpeg)
-![Screenshot 3](public/3.jpeg)
-![Screenshot 4](public/4.jpeg)
-![Screenshot 5](public/5.jpeg)
+## 📸 Screenshots
+
+<table>
+  <tr>
+    <td align="center">
+      <b>🏠 Home Page</b><br/>
+      <img src="public/1.jpeg" width="400" style="border-radius: 12px;" />
+    </td>
+    <td align="center">
+      <b>📂 Projects</b><br/>
+      <img src="public/2.jpeg" width="400" style="border-radius: 12px;" />
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <b>🧠 Skills</b><br/>
+      <img src="public/3.jpeg" width="400" style="border-radius: 12px;" />
+    </td>
+    <td align="center">
+      <b>📄 Resume</b><br/>
+      <img src="public/4.jpeg" width="400" style="border-radius: 12px;" />
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center" colspan="2">
+      <b>📬 Contact</b><br/>
+      <img src="public/5.jpeg" width="500" style="border-radius: 12px;" />
+    </td>
+  </tr>
+</table>
 
 ---
 
