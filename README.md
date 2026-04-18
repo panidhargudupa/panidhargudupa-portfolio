@@ -65,12 +65,16 @@ panidhargudupa-portfolio/
 ├── package.json
 ├── tailwind.config.js
 └── vite.config.ts
-
+```
 ---
 
 ## 📸 Screenshots
 
-(Add screenshots here)
+![Screenshot 1](public/1.jpeg)
+![Screenshot 2](public/2.jpeg)
+![Screenshot 3](public/3.jpeg)
+![Screenshot 4](public/4.jpeg)
+![Screenshot 5](public/5.jpeg)
 
 ---
 
