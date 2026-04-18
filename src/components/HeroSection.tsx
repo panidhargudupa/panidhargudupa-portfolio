@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, FileText, Mail } from "lucide-react";
+import { ArrowDown, ArrowRight, FileText, Mail } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const containerVariants = {
@@ -38,8 +38,8 @@ const HeroSection = () => {
           <motion.p variants={itemVariants} className="text-primary font-mono text-sm mb-4 tracking-[0.24em] uppercase">
             Full Stack Developer
           </motion.p>
-          <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-bold font-display mb-5 text-white text-balance">
-            Panidhar G Udupa
+          <motion.h1 variants={itemVariants} className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black font-display mb-5 text-white whitespace-nowrap uppercase tracking-wider">
+            PANIDHAR G UDUPA
           </motion.h1>
           <motion.h2 variants={itemVariants} className="text-lg md:text-2xl text-slate-100 font-medium mb-6 text-balance">
             Full Stack Developer | MCA Graduate | Software Engineer
@@ -65,7 +65,15 @@ const HeroSection = () => {
             onClick={() => scrollTo("#resume")}
             className="px-8 py-3 rounded-xl glass text-foreground font-semibold hover:bg-white/5 hover:scale-[1.02] transition-all flex items-center gap-2"
           >
-            <FileText size={18} /> Download Resume
+            <FileText size={18} className="hidden lg:block" />
+            <motion.span
+              className="lg:hidden inline-flex"
+              animate={{ x: [0, 6, 0] }}
+              transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ArrowRight size={18} />
+            </motion.span>
+            Download Resume
           </button>
           <button
             onClick={() => scrollTo("#contact")}
@@ -79,7 +87,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:block"
         >
           <button onClick={() => scrollTo("#about")} className="text-muted-foreground hover:text-primary transition-colors animate-bounce">
             <ArrowDown size={24} />

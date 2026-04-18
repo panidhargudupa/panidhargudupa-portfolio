@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
@@ -46,12 +47,21 @@ const Navbar = () => {
   }, []);
 
   const scrollTo = (href: string) => {
+    const wasMobileOpen = isMobileOpen;
     setIsMobileOpen(false);
     if (location.pathname !== "/") {
       navigate("/" + href);
     } else {
-      const el = document.querySelector(href);
-      el?.scrollIntoView({ behavior: "smooth" });
+      const doScroll = () => {
+        const el = document.querySelector(href);
+        el?.scrollIntoView({ behavior: "smooth" });
+      };
+      // Delay scroll if closing mobile menu so exit animation doesn't interfere
+      if (wasMobileOpen) {
+        setTimeout(doScroll, 350);
+      } else {
+        doScroll();
+      }
     }
   };
 

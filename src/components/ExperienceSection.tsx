@@ -16,26 +16,26 @@ const ExperienceSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold font-display text-gradient">Experience</h2>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55 }}
-          className="max-w-3xl mx-auto"
-        >
-          <div className="relative pl-10">
-            <div className="absolute left-2 top-6 bottom-6 w-px bg-primary/35" />
-            <motion.div
-              initial={{ scale: 0.6, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45 }}
-              className="absolute left-2 top-6 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-background bg-primary"
-            />
+        <div className="max-w-3xl mx-auto">
+          <div className="flex gap-6">
+            {/* Timeline column - just a dot, no lines since single entry */}
+            <div className="flex flex-col items-center w-5 shrink-0">
+              <div className="w-[2px] flex-1" />
+              <div className="relative flex items-center justify-center my-1">
+                <span className="absolute h-5 w-5 rounded-full bg-primary/20 animate-ping" />
+                <span className="relative h-3 w-3 rounded-full bg-primary shadow-[0_0_10px_3px_hsl(198_79%_58%/0.5)] animate-pulse" />
+              </div>
+              <div className="w-[2px] flex-1" />
+            </div>
 
+            {/* Card column */}
             <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55 }}
               whileHover={{ y: -8, scale: 1.01 }}
-              className="glass neon-outline rounded-xl p-6 hover:border-primary/30 transition-all"
+              className="glass neon-outline rounded-xl p-6 hover:border-primary/30 transition-all flex-1 group"
             >
               <div className="flex flex-wrap items-center gap-3 mb-4">
                 <div className="p-2 rounded-lg bg-primary/10">
@@ -46,7 +46,7 @@ const ExperienceSection = () => {
                   <p className="text-accent font-medium text-sm">Intern - .NET Full Stack Developer</p>
                 </div>
                 {/* View Certificate Button */}
-                <div className="ml-auto relative">
+                <div className="md:ml-auto relative">
                   <Link
                     to="/certificate"
                     className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary text-sm font-medium hover:bg-primary/20 hover:border-primary/40 hover:-translate-y-0.5 transition-all duration-300"
@@ -84,7 +84,7 @@ const ExperienceSection = () => {
               </ul>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

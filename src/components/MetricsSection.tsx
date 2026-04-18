@@ -63,27 +63,27 @@ const MetricsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="glass neon-outline card-hover rounded-2xl p-6 text-center group hover:border-primary/30 transition-all overflow-hidden relative"
+              className="glass neon-outline card-hover rounded-2xl p-6 group hover:border-primary/30 transition-all overflow-hidden relative flex flex-col items-center justify-center min-h-[200px]"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${metric.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
               <motion.div
                 animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 2.4, delay: i * 0.2, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors"
+                className="relative w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors"
               >
-                <metric.icon className="text-accent" size={24} />
+                <metric.icon className="text-accent" size={22} />
               </motion.div>
-              <p className="relative text-3xl md:text-4xl font-bold text-foreground mb-2">
+              <p className="relative text-3xl md:text-4xl font-bold text-foreground mb-1 text-center">
                 {typeof metric.value === "number" ? (
                   <CountUpValue value={metric.value} suffix={metric.suffix} />
                 ) : (
-                  <span className="text-xl md:text-2xl leading-snug">{metric.valueText}</span>
+                  <span className="text-base md:text-lg font-bold leading-tight">{metric.valueText}</span>
                 )}
               </p>
-              <p className="relative text-[11px] md:text-xs text-muted-foreground font-semibold uppercase tracking-[0.2em] leading-relaxed">
+              <p className="relative text-[10px] md:text-xs text-muted-foreground font-semibold uppercase tracking-[0.18em] leading-relaxed text-center">
                 {metric.label}
               </p>
-              <div className="relative mt-4 h-px w-12 mx-auto bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
+              <div className="relative mt-3 h-px w-10 mx-auto bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
             </motion.div>
           ))}
         </div>

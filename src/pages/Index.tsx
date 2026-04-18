@@ -2,6 +2,7 @@ import BackgroundFX from "@/components/BackgroundFX";
 import HeroSection from "@/components/HeroSection";
 import MetricsSection from "@/components/MetricsSection";
 import AboutSection from "@/components/AboutSection";
+import EducationSection from "@/components/EducationSection";
 import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -17,6 +18,7 @@ const Index = () => {
         <HeroSection />
         <MetricsSection />
         <AboutSection />
+        <EducationSection />
         <SkillsSection />
         <ExperienceSection />
         <ProjectsSection />
