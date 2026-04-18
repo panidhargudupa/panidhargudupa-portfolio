@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Briefcase, FolderGit2, Layers, Sparkles, type LucideIcon } from "lucide-react";
-import { projects } from "@/data/projects";
+import { allProjects } from "@/data/allProjects";
 
 interface Metric {
   icon: LucideIcon;
@@ -13,7 +13,7 @@ interface Metric {
 }
 
 const metrics: Metric[] = [
-  { icon: FolderGit2, value: projects.length, label: "Projects Delivered", accent: "from-primary/25 via-primary/8 to-transparent" },
+  { icon: FolderGit2, value: allProjects.length, label: "Projects", accent: "from-primary/25 via-primary/8 to-transparent" },
   { icon: Briefcase, value: 1, label: "Internship Experience", accent: "from-accent/18 via-accent/8 to-transparent" },
   { icon: Layers, valueText: "Frontend + Backend + AI", label: "Core Strengths", accent: "from-primary/18 via-accent/8 to-transparent" },
   { icon: Sparkles, valueText: "Web Apps + AI", label: "Current Focus", accent: "from-accent/20 via-primary/10 to-transparent" },

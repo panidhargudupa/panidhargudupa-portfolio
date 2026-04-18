@@ -2,7 +2,7 @@ import type { Project } from "./projects";
 
 export const allProjects: Project[] = [
   {
-    id: "panidhargudupa-portfolio",
+    id: "portfolio",
     title: "Panidhargudupa Portfolio",
     tagline: "Modern UI/UX Developer Portfolio",
     shortDescription: "Personal developer portfolio built with React, TypeScript, and TailwindCSS featuring modern UI, animations, and project showcase.",
@@ -64,7 +64,7 @@ export const allProjects: Project[] = [
     screenshots: []
   },
   {
-    id: "staynest-booking",
+    id: "staynest",
     title: "StayNest Booking",
     tagline: "Vacation Rental Platform",
     shortDescription: "Full-stack booking platform inspired by Airbnb with authentication, listings, booking system, and user interactions.",
@@ -188,7 +188,7 @@ export const allProjects: Project[] = [
     screenshots: []
   },
   {
-    id: "restaurant-management-system",
+    id: "restaurant-management",
     title: "Restaurant Management System",
     tagline: "Enterprise Operations Suite",
     shortDescription: "Full-stack restaurant management system built with .NET, Angular, and SQL Server for managing orders, menu, and operations.",
