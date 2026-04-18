@@ -9,6 +9,7 @@ import Index from "./pages/Index.tsx";
 import ProjectDetail from "./pages/ProjectDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Certificate from "./pages/Certificate.tsx";
+import AllProjects from "./pages/AllProjects.tsx";
 import Navbar from "@/components/Navbar";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const AnimatedRoutes = () => {
         <Routes location={location}>
           <Route path="/" element={<Index />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/all-projects" element={<AllProjects />} />
           <Route path="/certificate" element={<Certificate />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

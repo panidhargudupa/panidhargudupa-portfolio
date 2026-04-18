@@ -55,15 +55,22 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.45 }}
           className="flex flex-wrap items-center justify-center gap-4"
         >
-          <button
+          <motion.button
             onClick={() => scrollTo("#projects")}
-            className="px-8 py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:scale-[1.02] hover:bg-sky-400 transition-all glow-primary"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className="shine-button px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary/20 to-primary/10 text-primary border border-primary/25 hover:from-primary/30 hover:to-primary/20 hover:border-primary/40 hover:shadow-[0_8px_32px_rgba(14,165,233,0.35)] transition-all duration-300 font-bold tracking-wide"
           >
             View Projects
-          </button>
-          <button
+          </motion.button>
+          
+          <motion.button
             onClick={() => scrollTo("#resume")}
-            className="px-8 py-3 rounded-xl glass text-foreground font-semibold hover:bg-white/5 hover:scale-[1.02] transition-all flex items-center gap-2"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 text-primary border border-primary/20 hover:from-primary/20 hover:to-primary/10 hover:border-primary/30 hover:shadow-[0_8px_24px_rgba(14,165,233,0.25)] transition-all duration-300 font-bold tracking-wide flex items-center gap-2"
           >
             <FileText size={18} className="hidden lg:block" />
             <motion.span
@@ -74,13 +81,17 @@ const HeroSection = () => {
               <ArrowRight size={18} />
             </motion.span>
             Download Resume
-          </button>
-          <button
+          </motion.button>
+
+          <motion.button
             onClick={() => scrollTo("#contact")}
-            className="px-8 py-3 rounded-xl glass text-foreground font-semibold hover:bg-white/5 hover:scale-[1.02] transition-all flex items-center gap-2"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 text-primary border border-primary/20 hover:from-primary/20 hover:to-primary/10 hover:border-primary/30 hover:shadow-[0_8px_24px_rgba(14,165,233,0.25)] transition-all duration-300 font-bold tracking-wide flex items-center gap-2"
           >
             <Mail size={18} /> Contact Me
-          </button>
+          </motion.button>
         </motion.div>
 
         <motion.div

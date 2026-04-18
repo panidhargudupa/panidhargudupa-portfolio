@@ -6,13 +6,13 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     if (hash) {
-      // If navigating to /#section from another page, wait for render then scroll
+      // If navigating to /#section from another page, wait for AnimatePresence 450ms transition + render then scroll
       setTimeout(() => {
         const el = document.querySelector(hash);
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
         }
-      }, 100);
+      }, 550);
     } else {
       window.scrollTo(0, 0);
     }
