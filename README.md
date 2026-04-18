@@ -70,8 +70,6 @@ panidhargudupa-portfolio/
 
 ## 📸 Screenshots
 
-## 📸 Screenshots
-
 <table>
   <tr>
     <td align="center">
